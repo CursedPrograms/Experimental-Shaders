@@ -38,22 +38,11 @@ Shader "Custom/TessellationShader"
 
         void surf(Input IN, inout SurfaceOutput o)
         {
-            // Albedo
             o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb;
-
-            // Normal Map
             o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
-
-            // Luma
             float luma = tex2D(_LumaTex, IN.uv_LumaTex).r;
-
-            // Noise
             float noise = tex2D(_NoiseTex, IN.uv_NoiseTex).r;
-
-            // Combine luma and noise for tessellation
             float tessellation = luma + noise;
-
-            // Apply metallic and smoothness
             o.Metallic = _Metallic;
             o.Smoothness = _Smoothness;
         }
