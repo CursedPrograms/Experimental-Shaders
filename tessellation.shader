@@ -47,7 +47,6 @@ Shader "Custom/TessellationShader"
             o.Smoothness = _Smoothness;
         }
 
-        // Tessellation function
         [maxtess 64]
         void TessFunction(Input IN, Output o, float2 tess)
         {
